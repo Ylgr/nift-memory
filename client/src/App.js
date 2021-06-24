@@ -1,73 +1,81 @@
-import React, { Component } from "react";
-import SimpleStorageContract from "./contracts/SimpleStorage.json";
-import getWeb3 from "./getWeb3";
-
-import "./App.css";
+import React, {Component} from "react";
+import NiftMemoryDust from "./contracts/NiftMemoryDust.json";
+import NiftMemoryTreasure from "./contracts/NiftMemoryTreasure.json";
+import Web3 from "web3";
+import {
+    Card, Button, CardImg, CardTitle, CardText,
+    CardSubtitle, CardBody, Col, Container, Row
+} from 'reactstrap';
+import Axios from "axios";
 
 class App extends Component {
-  state = { storageValue: 0, web3: null, accounts: null, contract: null };
+    state = {web3: null, dustContract: null, dustInfo: {}, treasureContract: null, treasureInfo: []};
 
-  componentDidMount = async () => {
-    try {
-      // Get network provider and web3 instance.
-      const web3 = await getWeb3();
+    componentDidMount = async () => {
+        try {
+            // Get network provider and web3 instance.
+            const web3 = new Web3('https://data-seed-prebsc-1-s1.binance.org:8545')
 
-      // Use web3 to get the user's accounts.
-      const accounts = await web3.eth.getAccounts();
+            const networkId = await web3.eth.net.getId()
+            const dustContract = new web3.eth.Contract(NiftMemoryDust.abi, NiftMemoryDust.networks[networkId].address)
 
-      // Get the contract instance.
-      const networkId = await web3.eth.net.getId();
-      const deployedNetwork = SimpleStorageContract.networks[networkId];
-      const instance = new web3.eth.Contract(
-        SimpleStorageContract.abi,
-        deployedNetwork && deployedNetwork.address,
-      );
+            const dustInfo = {
+                name: await dustContract.methods.name().call(),
+                symbol: await dustContract.methods.symbol().call(),
+                totalSupply: await dustContract.methods.totalSupply().call()
+            }
 
-      // Set web3, accounts, and contract to the state, and then proceed with an
-      // example of interacting with the contract's methods.
-      this.setState({ web3, accounts, contract: instance }, this.runExample);
-    } catch (error) {
-      // Catch any errors for any of the above operations.
-      alert(
-        `Failed to load web3, accounts, or contract. Check console for details.`,
-      );
-      console.error(error);
+            const treasureContract = new web3.eth.Contract(NiftMemoryTreasure.abi, NiftMemoryTreasure.networks[networkId].address)
+
+            let treasureInfo = []
+            for(let tokenId = 1; tokenId <= 3; tokenId++) {
+                const uri = await treasureContract.methods.tokenURI(tokenId).call()
+                const response = await Axios(uri)
+                response.data.owner = await treasureContract.methods.ownerOf(tokenId).call()
+                treasureInfo.push(response.data)
+            }
+            console.log('treasureInfo: ', treasureInfo)
+            this.setState({web3, dustContract, dustInfo, treasureContract, treasureInfo})
+        } catch (error) {
+            // Catch any errors for any of the above operations.
+            alert(
+                `Failed to load web3. Check console for details.`,
+            );
+            console.error(error);
+        }
+    };
+
+    render() {
+        return (
+            <div className="App">
+                <Container>
+                    <Card>
+                        <CardTitle>Currency</CardTitle>
+                        <CardText>Name: {this.state.dustInfo.name}</CardText>
+                        <CardText>Symbol: {this.state.dustInfo.symbol}</CardText>
+                        <CardText>Total supply: {this.state.dustInfo.totalSupply}</CardText>
+                    </Card>
+                </Container>
+                <Row>
+                    {this.state.treasureInfo.map((e,index) => (
+                        <Col md="4" key={index}>
+                            <Card>
+                                <CardImg top src={e.image} alt={e.name}/>
+                                <CardBody>
+                                    <CardTitle>{e.name}</CardTitle>
+                                    <CardSubtitle>Owner: {e.owner}</CardSubtitle>
+                                    <CardText>{e.description}</CardText>
+                                </CardBody>
+                            </Card>
+                        </Col>
+                    ))}
+
+
+                </Row>
+
+            </div>
+        );
     }
-  };
-
-  runExample = async () => {
-    const { accounts, contract } = this.state;
-
-    // Stores a given value, 5 by default.
-    await contract.methods.set(5).send({ from: accounts[0] });
-
-    // Get the value from the contract to prove it worked.
-    const response = await contract.methods.get().call();
-
-    // Update state with the result.
-    this.setState({ storageValue: response });
-  };
-
-  render() {
-    if (!this.state.web3) {
-      return <div>Loading Web3, accounts, and contract...</div>;
-    }
-    return (
-      <div className="App">
-        <h1>Good to Go!</h1>
-        <p>Your Truffle Box is installed and ready.</p>
-        <h2>Smart Contract Example</h2>
-        <p>
-          If your contracts compiled and migrated successfully, below will show
-          a stored value of 5 (by default).
-        </p>
-        <p>
-          Try changing the value stored on <strong>line 42</strong> of App.js.
-        </p>
-        <div>The stored value is: {this.state.storageValue}</div>
-      </div>
-    );
-  }
 }
 
 export default App;
