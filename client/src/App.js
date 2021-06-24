@@ -49,7 +49,6 @@ class App extends Component {
             <div className="App">
                 <Container>
                     <Card>
-                        <CardTitle>Currency</CardTitle>
                         <CardText>Name: {this.state.dustInfo.name}</CardText>
                         <CardText>Symbol: {this.state.dustInfo.symbol}</CardText>
                         <CardText>Total supply: {this.state.dustInfo.totalSupply}</CardText>
@@ -59,7 +58,7 @@ class App extends Component {
                     {this.state.treasureInfo.map((e,index) => (
                         <Col md="4" key={index}>
                             <Card>
-                                <CardImg top src={e.image} alt={e.name}/>
+                                <CardImg height="750px" top src={e.image} alt={e.name}/>
                                 <CardBody>
                                     <CardTitle>{e.name}</CardTitle>
                                     <CardSubtitle>Owner: {e.owner}</CardSubtitle>
