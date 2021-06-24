@@ -22,7 +22,7 @@ class App extends Component {
             const dustInfo = {
                 name: await dustContract.methods.name().call(),
                 symbol: await dustContract.methods.symbol().call(),
-                totalSupply: await dustContract.methods.totalSupply().call()
+                totalSupply: (await dustContract.methods.totalSupply().call())/10e18
             }
 
             const treasureContract = new web3.eth.Contract(NiftMemoryTreasure.abi, NiftMemoryTreasure.networks[networkId].address)
