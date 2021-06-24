@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "cf28fe8853a3356b573eea7c5c8dbb4a",
+    "revision": "8c67b075247f52ab47c5371cd8f6ed8d",
     "url": "/nift-memory/index.html"
   },
   {
-    "revision": "0615c8c3be206c7e4ba3",
+    "revision": "c3324381fc1381253f88",
     "url": "/nift-memory/static/css/2.32e6ede2.chunk.css"
   },
   {
-    "revision": "0615c8c3be206c7e4ba3",
-    "url": "/nift-memory/static/js/2.31bfb1dd.chunk.js"
+    "revision": "c3324381fc1381253f88",
+    "url": "/nift-memory/static/js/2.84d216b5.chunk.js"
   },
   {
-    "revision": "ad8a28f4d3751aa92736",
-    "url": "/nift-memory/static/js/main.9f370dfd.chunk.js"
+    "revision": "a968f6a9c7620bb44050",
+    "url": "/nift-memory/static/js/main.3a32d2b0.chunk.js"
   },
   {
     "revision": "d471ff4996a911496f4f",

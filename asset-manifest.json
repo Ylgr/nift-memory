@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.js": "/nift-memory/static/js/main.9f370dfd.chunk.js",
-    "main.js.map": "/nift-memory/static/js/main.9f370dfd.chunk.js.map",
+    "main.js": "/nift-memory/static/js/main.3a32d2b0.chunk.js",
+    "main.js.map": "/nift-memory/static/js/main.3a32d2b0.chunk.js.map",
     "runtime-main.js": "/nift-memory/static/js/runtime-main.502aab33.js",
     "runtime-main.js.map": "/nift-memory/static/js/runtime-main.502aab33.js.map",
     "static/css/2.32e6ede2.chunk.css": "/nift-memory/static/css/2.32e6ede2.chunk.css",
-    "static/js/2.31bfb1dd.chunk.js": "/nift-memory/static/js/2.31bfb1dd.chunk.js",
-    "static/js/2.31bfb1dd.chunk.js.map": "/nift-memory/static/js/2.31bfb1dd.chunk.js.map",
+    "static/js/2.84d216b5.chunk.js": "/nift-memory/static/js/2.84d216b5.chunk.js",
+    "static/js/2.84d216b5.chunk.js.map": "/nift-memory/static/js/2.84d216b5.chunk.js.map",
     "index.html": "/nift-memory/index.html",
-    "precache-manifest.4f467d77fecfe0c2f6013720ef6888f9.js": "/nift-memory/precache-manifest.4f467d77fecfe0c2f6013720ef6888f9.js",
+    "precache-manifest.a1bfdf10d07a2850b3d38b5687bc57e1.js": "/nift-memory/precache-manifest.a1bfdf10d07a2850b3d38b5687bc57e1.js",
     "service-worker.js": "/nift-memory/service-worker.js",
     "static/css/2.32e6ede2.chunk.css.map": "/nift-memory/static/css/2.32e6ede2.chunk.css.map"
   },
   "entrypoints": [
     "static/js/runtime-main.502aab33.js",
     "static/css/2.32e6ede2.chunk.css",
-    "static/js/2.31bfb1dd.chunk.js",
-    "static/js/main.9f370dfd.chunk.js"
+    "static/js/2.84d216b5.chunk.js",
+    "static/js/main.3a32d2b0.chunk.js"
   ]
 }
