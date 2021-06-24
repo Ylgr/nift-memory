@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/nift-memory/static/css/main.b100e6da.chunk.css",
+    "main.js": "/nift-memory/static/js/main.c5692ce6.chunk.js",
+    "main.js.map": "/nift-memory/static/js/main.c5692ce6.chunk.js.map",
+    "runtime-main.js": "/nift-memory/static/js/runtime-main.502aab33.js",
+    "runtime-main.js.map": "/nift-memory/static/js/runtime-main.502aab33.js.map",
+    "static/js/2.277614e3.chunk.js": "/nift-memory/static/js/2.277614e3.chunk.js",
+    "static/js/2.277614e3.chunk.js.map": "/nift-memory/static/js/2.277614e3.chunk.js.map",
+    "index.html": "/nift-memory/index.html",
+    "precache-manifest.2fe138cc507fde5170cd6c27a9d38026.js": "/nift-memory/precache-manifest.2fe138cc507fde5170cd6c27a9d38026.js",
+    "service-worker.js": "/nift-memory/service-worker.js",
+    "static/css/main.b100e6da.chunk.css.map": "/nift-memory/static/css/main.b100e6da.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.502aab33.js",
+    "static/js/2.277614e3.chunk.js",
+    "static/css/main.b100e6da.chunk.css",
+    "static/js/main.c5692ce6.chunk.js"
+  ]
+}
