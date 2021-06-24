@@ -34,7 +34,6 @@ class App extends Component {
                 response.data.owner = await treasureContract.methods.ownerOf(tokenId).call()
                 treasureInfo.push(response.data)
             }
-            console.log('treasureInfo: ', treasureInfo)
             this.setState({web3, dustContract, dustInfo, treasureContract, treasureInfo})
         } catch (error) {
             // Catch any errors for any of the above operations.
